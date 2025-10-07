@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -H \"USPTO-API-KEY: 22tljOtfx4tyI7uld3rp2iRqy2UsAvUE\" \"https://tsdrapi.uspto.gov/ts/cd/casestatus/sn74547403/info.json\")",
+      "Bash(python3:*)",
+      "Bash(pip3 install:*)",
+      "Bash(streamlit run:*)",
+      "Read(//tmp/**)",
+      "Bash(curl:*)",
+      "WebFetch(domain:tsdr.uspto.gov)",
+      "WebSearch",
+      "Bash(pkill:*)",
+      "Bash(grep:*)",
+      "Bash(xxd:*)",
+      "Read(//Users/nagavenkatasaichennu/Desktop/**)",
+      "Bash(ollama list:*)",
+      "Bash(pip3 list:*)",
+      "Bash(ollama pull:*)",
+      "Bash(cat:*)",
+      "Bash(export OPENROUTER_API_KEY='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')",
+      "Bash(timeout 120 python3:*)",
+      "Read(//dev/**)",
+      "WebFetch(domain:localhost)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
