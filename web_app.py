@@ -13,7 +13,6 @@ from typing import List, Dict
 import time
 import io
 import base64
-from google.cloud import vision
 import os
 from datetime import datetime
 import re
