@@ -20,7 +20,16 @@ A comprehensive web application for retrieving and analyzing US and Internationa
 - USPTO API Key
 - Anthropic (Claude) API Key for image classification
 
-## 🚀 Installation
+## 🚀 Quick Start (Streamlit Cloud)
+
+**No installation needed!** Deploy directly to Streamlit Cloud:
+
+1. Go to [Streamlit Cloud](https://streamlit.io/cloud)
+2. Connect your GitHub account
+3. Deploy this repository: `Nagavenkatasai7/uspto`
+4. Add your API keys in the Secrets section (see Usage section below)
+
+## 🚀 Local Installation
 
 1. Clone the repository:
 ```bash
@@ -44,7 +53,25 @@ pip install -r requirements.txt
 
 ## 💻 Usage
 
-### Web Application (Streamlit)
+### Option 1: Deploy to Streamlit Cloud (Recommended)
+
+1. **Fork or use this repository**
+2. **Go to [Streamlit Cloud](https://streamlit.io/cloud)**
+3. **Sign in with GitHub**
+4. **Click "New app"**
+5. **Select your repository: `Nagavenkatasai7/uspto`**
+6. **Set main file path: `web_app.py`**
+7. **Click "Advanced settings" > "Secrets"**
+8. **Add your API keys in TOML format:**
+   ```toml
+   USPTO_API_KEY = "your_actual_uspto_key"
+   ANTHROPIC_API_KEY = "your_actual_anthropic_key"
+   ```
+9. **Click "Deploy"**
+
+Your app will be live at: `https://[your-app-name].streamlit.app` 🚀
+
+### Option 2: Run Locally
 
 Run the Streamlit web interface:
 ```bash

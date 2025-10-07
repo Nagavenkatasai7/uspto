@@ -1573,15 +1573,35 @@ def main():
     st.title("⚖️ USPTO Opposition Trademark Class Scraper")
     st.markdown("Retrieve US and International classes from opposition pleaded applications")
 
-    # Configuration - Load from environment variables
-    API_KEY = os.getenv("USPTO_API_KEY")
-    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+    # Configuration - Load from environment variables or Streamlit secrets
+    # Streamlit Cloud uses st.secrets, local development uses .env
+    try:
+        # Try Streamlit secrets first (for Streamlit Cloud deployment)
+        API_KEY = st.secrets.get("USPTO_API_KEY", None)
+        ANTHROPIC_API_KEY = st.secrets.get("ANTHROPIC_API_KEY", None)
+    except (AttributeError, FileNotFoundError):
+        # Fallback to environment variables (for local development)
+        API_KEY = os.getenv("USPTO_API_KEY")
+        ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+    
     CLAUDE_VISION_API_KEY = ANTHROPIC_API_KEY  # Same key for vision tasks
     
     # Check if API keys are configured
     if not API_KEY:
-        st.error("⚠️ USPTO API Key not found! Please set USPTO_API_KEY in your .env file.")
-        st.info("Create a `.env` file in the project root with:\n\n```\nUSPTO_API_KEY=your_key_here\nANTHROPIC_API_KEY=your_key_here\n```")
+        st.error("⚠️ USPTO API Key not found!")
+        st.info("""
+        **For Local Development:** Create a `.env` file with:
+        ```
+        USPTO_API_KEY=your_key_here
+        ANTHROPIC_API_KEY=your_key_here
+        ```
+        
+        **For Streamlit Cloud:** Add secrets in App Settings > Secrets:
+        ```
+        USPTO_API_KEY = "your_key_here"
+        ANTHROPIC_API_KEY = "your_key_here"
+        ```
+        """)
         st.stop()
     
     if not ANTHROPIC_API_KEY:

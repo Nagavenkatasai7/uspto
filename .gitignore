@@ -40,6 +40,7 @@ Thumbs.db
 
 # Environment variables
 .env
+.streamlit/secrets.toml
 
 # Data files (optional - uncomment if you don't want to push these)
 # *.xlsx
