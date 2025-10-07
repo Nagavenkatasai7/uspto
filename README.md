@@ -33,9 +33,14 @@ cd uspto
 pip install -r requirements.txt
 ```
 
-3. Configure API keys in `web_app.py`:
-   - `API_KEY`: Your USPTO API key
-   - `CLAUDE_VISION_API_KEY`: Your Anthropic API key
+3. Configure API keys:
+   - Copy `.env.example` to `.env`
+   - Add your actual API keys to the `.env` file:
+     ```
+     USPTO_API_KEY=your_actual_uspto_key
+     ANTHROPIC_API_KEY=your_actual_anthropic_key
+     ```
+   - **Important**: Never commit the `.env` file to GitHub (it's already in `.gitignore`)
 
 ## 💻 Usage
 

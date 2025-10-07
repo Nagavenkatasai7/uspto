@@ -18,6 +18,10 @@ import os
 from datetime import datetime
 import re
 import anthropic
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 class USPTOOppositionScraper:
@@ -1569,11 +1573,20 @@ def main():
     st.title("⚖️ USPTO Opposition Trademark Class Scraper")
     st.markdown("Retrieve US and International classes from opposition pleaded applications")
 
-    # Configuration
-    API_KEY = "22tljOtfx4tyI7uld3rp2iRqy2UsAvUE"
-    # Claude Vision API key (replacing Google Vision)
-    CLAUDE_VISION_API_KEY = "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"
-    ANTHROPIC_API_KEY = None  # Optional: Add your Anthropic API key here for slogan detection
+    # Configuration - Load from environment variables
+    API_KEY = os.getenv("USPTO_API_KEY")
+    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+    CLAUDE_VISION_API_KEY = ANTHROPIC_API_KEY  # Same key for vision tasks
+    
+    # Check if API keys are configured
+    if not API_KEY:
+        st.error("⚠️ USPTO API Key not found! Please set USPTO_API_KEY in your .env file.")
+        st.info("Create a `.env` file in the project root with:\n\n```\nUSPTO_API_KEY=your_key_here\nANTHROPIC_API_KEY=your_key_here\n```")
+        st.stop()
+    
+    if not ANTHROPIC_API_KEY:
+        st.warning("⚠️ Anthropic API Key not found. Image classification will use default behavior.")
+        ANTHROPIC_API_KEY = None
 
     # Single Opposition Search only
     # Input section
